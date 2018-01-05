@@ -1,5 +1,5 @@
-create database dbincubator;
-use dbincubator;
+create database bdincubator;
+use bdincubator;
 
 CREATE TABLE `topic` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -51,10 +51,12 @@ CREATE TABLE `statistic` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
   `correct` tinyint(4) DEFAULT NULL,
-  `questionId` tinyint(4) DEFAULT NULL,
+  `questionId` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `userId_idx` (`userId`),
+  KEY `questionId_idx` (`questionId`),
+  CONSTRAINT `questionId_idx` FOREIGN KEY (`questionId`) REFERENCES `question` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -82,7 +84,8 @@ CREATE TABLE `answer` (
   `correct` tinyint(4) DEFAULT NULL,
   `questionId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
+  KEY `questionId_id` (`questionId`),
+  CONSTRAINT `questionId_id` FOREIGN KEY (`questionId`) REFERENCES `question` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
