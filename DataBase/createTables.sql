@@ -4,7 +4,7 @@ use bdincubator;
 CREATE TABLE `topic` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
+  `description` varchar(800) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -19,7 +19,7 @@ CREATE TABLE `role` (
 CREATE TABLE `test` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `discription` varchar(200) DEFAULT NULL,
+  `description` varchar(800) DEFAULT NULL,
   `topicId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `topicId_idx` (`topicId`),
@@ -40,7 +40,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `discription` varchar(350) DEFAULT NULL,
+  `description` varchar(800) DEFAULT NULL,
   `testid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `testId_idx` (`testid`),
@@ -62,7 +62,7 @@ CREATE TABLE `statistic` (
 
 CREATE TABLE `literature` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `discription` varchar(200) DEFAULT NULL,
+  `description` varchar(800) DEFAULT NULL,
   `questionId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `questionId_idx` (`questionId`),
@@ -71,7 +71,7 @@ CREATE TABLE `literature` (
 
 CREATE TABLE `link` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `link` varchar(200) DEFAULT NULL,
+  `link` varchar(800) DEFAULT NULL,
   `literatureId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `literatureId_idx` (`literatureId`),
@@ -80,7 +80,7 @@ CREATE TABLE `link` (
 
 CREATE TABLE `answer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(200) DEFAULT NULL,
+  `description` varchar(800) DEFAULT NULL,
   `correct` tinyint(4) DEFAULT NULL,
   `questionId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
