@@ -26,8 +26,45 @@ INSERT INTO link (link, literatureId) VALUES ( "www.sjd.su", 4);
 INSERT INTO link (link, literatureId) VALUES ( "www.gfdsse.dsf", 5);
 INSERT INTO link (link, literatureId) VALUES ( "www.sqewf.com", 5);
 
-INSERT INTO answer (description, questionId) VALUES ("true", "false", "null", "Инициализируются только переменные класса: 0, null, true/false", 1);
-INSERT INTO answer (description, questionId) VALUES ("по ссылке", "по значению", "и по ссылке и по значению", "затрудняюсь ответить", 2);
-INSERT INTO answer (description, questionId) VALUES ("никаких", "обязательная запись: public static void main", "обязательная запись: public static void main + входные параметры (только массив строк)", "обязательная запись: public static void main + входные параметры (любые)", 3);
-INSERT INTO answer (description, questionId) VALUES ("одноразовое выполнение цикла", "многоразовое выполнение цикла", "выполнение цикла с использованием итератора", "выполнение цикла без использования итератора", 4);
-INSERT INTO answer (description, questionId) VALUES ("continue", "for", "exit", "break", 5);
+INSERT INTO answer (description, correct, questionId) VALUES ("Инициализируются только переменные класса: 0, null, true/false", true, 1);
+INSERT INTO answer (description, correct, questionId) VALUES ("Инициализирутся 0", false, 1);
+INSERT INTO answer (description, correct, questionId) VALUES ("Инициализирутся true", false, 1);
+INSERT INTO answer (description, correct, questionId) VALUES ("Инициализирутся false", false, 1);
+
+INSERT INTO answer (description, correct, questionId) VALUES ("по ссылке", false, 2);
+INSERT INTO answer (description, correct, questionId) VALUES ("по значению", true, 2);
+INSERT INTO answer (description, correct, questionId) VALUES ("по ссылке и по значению", false, 2);
+INSERT INTO answer (description, correct, questionId) VALUES ("затрудняюсь ответить", false, 2);
+
+INSERT INTO answer (description, correct, questionId) VALUES ("никаких", false, 3);
+INSERT INTO answer (description, correct, questionId) VALUES ("обязательная запись: public static void main", false, 3);
+INSERT INTO answer (description, correct, questionId) VALUES ("обязательная запись: public static void main + входные параметры (только массив строк)", true, 3);
+INSERT INTO answer (description, correct, questionId) VALUES ("обязательная запись: public static void main + входные параметры (любые параметры)", false, 3);
+
+INSERT INTO answer (description, correct, questionId) VALUES ("одноразовое выполнение цикла", true, 4);
+INSERT INTO answer (description, correct, questionId) VALUES ("многоразовое выполнение цикла", false, 4);
+INSERT INTO answer (description, correct, questionId) VALUES ("одноразовое выполнение цикла с итератором", false, 4);
+INSERT INTO answer (description, correct, questionId) VALUES ("одноразовое выполнение цикла без итератора", false, 4);
+
+INSERT INTO answer (description, correct, questionId) VALUES ("continue", false, 5);
+INSERT INTO answer (description, correct, questionId) VALUES ("for", false, 5);
+INSERT INTO answer (description, correct, questionId) VALUES ("exit", false, 5);
+INSERT INTO answer (description, correct, questionId) VALUES ("break", true, 5);
+
+INSERT INTO role (user, tutor, admin) VALUES (1, 0, 0);
+INSERT INTO role (user, tutor, admin) VALUES (0, 1, 0);
+INSERT INTO role (user, tutor, admin) VALUES (0, 0, 1);
+INSERT INTO role (user, tutor, admin) VALUES (0, 1, 1);
+INSERT INTO role (user, tutor, admin) VALUES (1, 1, 1);
+INSERT INTO role (user, tutor, admin) VALUES (1, 1, 0);
+
+INSERT INTO statistic (correct, questionId) VALUES (true, 1);
+INSERT INTO statistic (correct, questionId) VALUES (false, 1);
+INSERT INTO statistic (correct, questionId) VALUES (true, 2);
+INSERT INTO statistic (correct, questionId) VALUES (false, 2);
+INSERT INTO statistic (correct, questionId) VALUES (true, 3);
+INSERT INTO statistic (correct, questionId) VALUES (false, 3);
+INSERT INTO statistic (correct, questionId) VALUES (true, 4);
+INSERT INTO statistic (correct, questionId) VALUES (false, 4);
+INSERT INTO statistic (correct, questionId) VALUES (true, 5);
+INSERT INTO statistic (correct, questionId) VALUES (false, 5);
