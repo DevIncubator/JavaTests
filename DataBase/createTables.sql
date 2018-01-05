@@ -45,3 +45,44 @@ CREATE TABLE `link` (
   CONSTRAINT `literatureId` FOREIGN KEY (`literatureId`) REFERENCES `literature` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) DEFAULT NULL,
+  `tutor` int(11) DEFAULT NULL,
+  `admin` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstName` varchar(45) DEFAULT NULL,
+  `lastName` varchar(45) DEFAULT NULL,
+  `login` varchar(45) DEFAULT NULL,
+  `password` int(11) DEFAULT NULL,
+  `roleId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `roleId_idx` (`roleId`),
+  CONSTRAINT `roleId` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `statistic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date DEFAULT NULL,
+  `correct` tinyint(4) DEFAULT NULL,
+  `questionId` tinyint(4) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId_idx` (`userId`),
+  CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `answer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(200) DEFAULT NULL,
+  `correct` tinyint(4) DEFAULT NULL,
+  `questionId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
