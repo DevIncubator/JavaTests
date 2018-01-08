@@ -3,14 +3,14 @@ package com.JavaTests.entity;
 import javax.persistence.*;
 
 @Entity
-@@Table(name = "statistic")
+@Table(name = "statistic")
 public class Statistic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "date")
-    private date date;
+//    @Column(name = "date")
+//    private date date;
 
     @Column(name = "correct")
     private boolean correct;
@@ -32,13 +32,13 @@ public class Statistic {
         this.id = id;
     }
 
-    public date getDate() {
-        return date;
-    }
-
-    public void setDate(date date) {
-        this.date = date;
-    }
+//    public date getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(date date) {
+//        this.date = date;
+//    }
 
     public boolean isCorrect() {
         return correct;
