@@ -1,5 +1,7 @@
 package com.JavaTests.entity;
 
+import javax.persistence.*;
+
 @Entity
 @Table(name = "literature")
 public class Literature {
