@@ -10,7 +10,7 @@ public class Statistic {
     private long id;
 
 //    @Column(name = "date")
-//    private date date;
+//    private Date date;
 
     @Column(name = "correct")
     private boolean correct;
