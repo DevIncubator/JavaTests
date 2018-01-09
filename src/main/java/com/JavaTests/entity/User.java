@@ -1,6 +1,8 @@
 package com.JavaTests.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -21,8 +23,12 @@ public class User {
     @Column(name = "password")
     private int password;
 
-    @Column(name = "roleId")
-    private int roleId;
+    @OneToOne
+    @PrimaryKeyJoinColumn(name = "roleId")
+    private Role role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<Statistic> listStatistics = new HashSet<>();
 
     public User() {
     }
@@ -67,11 +73,19 @@ public class User {
         this.password = password;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Set<Statistic> getListStatistics() {
+        return listStatistics;
+    }
+
+    public void setListStatistics(Set<Statistic> listStatistics) {
+        this.listStatistics = listStatistics;
     }
 }

@@ -12,8 +12,9 @@ public class Link {
     @Column(name = "link")
     private String link;
 
-    @Column(name = "literatureId")
-    private int literatureId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "literatureId")
+    private Literature literature;
 
     public Link() {
     }
@@ -34,11 +35,11 @@ public class Link {
         this.link = link;
     }
 
-    public int getLiteratureId() {
-        return literatureId;
+    public Literature getLiterature() {
+        return literature;
     }
 
-    public void setLiteratureId(int literatureId) {
-        this.literatureId = literatureId;
+    public void setLiterature(Literature literature) {
+        this.literature = literature;
     }
 }

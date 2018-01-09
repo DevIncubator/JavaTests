@@ -15,8 +15,9 @@ public class Answer {
     @Column(name = "correct")
     private boolean correct;
 
-    @Column(name = "questionId")
-    private int questionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "questionId")
+    private Question quest;
 
     public Answer() {
     }
@@ -45,11 +46,11 @@ public class Answer {
         this.correct = correct;
     }
 
-    public int getQuestionId() {
-        return questionId;
+    public Question getQuest() {
+        return quest;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setQuest(Question quest) {
+        this.quest = quest;
     }
 }

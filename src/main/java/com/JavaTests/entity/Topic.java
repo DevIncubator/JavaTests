@@ -1,6 +1,8 @@
 package com.JavaTests.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "topic")
@@ -14,6 +16,9 @@ public class Topic {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "topic", fetch = FetchType.LAZY)
+    private Set<Test> listTest = new HashSet<>();
 
     public Topic() {
     }
@@ -40,5 +45,13 @@ public class Topic {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Test> getListTest() {
+        return listTest;
+    }
+
+    public void setListTest(Set<Test> listTset) {
+        this.listTest = listTset;
     }
 }

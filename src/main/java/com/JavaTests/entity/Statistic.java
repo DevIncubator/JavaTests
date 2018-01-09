@@ -1,6 +1,7 @@
 package com.JavaTests.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "statistic")
@@ -9,17 +10,20 @@ public class Statistic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @Column(name = "date")
-//    private date date;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date")
+    private Date date;
 
     @Column(name = "correct")
     private boolean correct;
 
-    @Column(name = "questionId")
-    private int questionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "questionId")
+    private Question question;
 
-    @Column(name = "userId")
-    private int userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    private User user;
 
     public Statistic() {
     }
@@ -32,14 +36,6 @@ public class Statistic {
         this.id = id;
     }
 
-//    public date getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(date date) {
-//        this.date = date;
-//    }
-
     public boolean isCorrect() {
         return correct;
     }
@@ -48,19 +44,27 @@ public class Statistic {
         this.correct = correct;
     }
 
-    public int getQuestionId() {
-        return questionId;
+    public Date getDate() {
+        return date;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public int getUserId() {
-        return userId;
+    public Question getQuestion() {
+        return question;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

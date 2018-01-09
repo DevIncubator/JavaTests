@@ -1,6 +1,8 @@
 package com.JavaTests.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "question")
@@ -12,8 +14,18 @@ public class Question {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "testid")
-    private int testid;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "testId")
+    private Test test;
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+    private Set<Literature> listLiterature = new HashSet<>();
+
+    @OneToMany(mappedBy = "quest", fetch = FetchType.LAZY)
+    private Set<Answer> listAnswer = new HashSet<>();
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+    private Set<Statistic> listStatistics = new HashSet<>();
 
     public Question() {
     }
@@ -34,11 +46,35 @@ public class Question {
         this.description = description;
     }
 
-    public int getTestid() {
-        return testid;
+    public Test getTest() {
+        return test;
     }
 
-    public void setTestid(int testid) {
-        this.testid = testid;
+    public void setTest(Test test) {
+        this.test = test;
+    }
+
+    public Set<Literature> getListLiterature() {
+        return listLiterature;
+    }
+
+    public void setListLiterature(Set<Literature> listQuestion) {
+        this.listLiterature = listQuestion;
+    }
+
+    public Set<Answer> getListAnswer() {
+        return listAnswer;
+    }
+
+    public void setListAnswer(Set<Answer> listAnswer) {
+        this.listAnswer = listAnswer;
+    }
+
+    public Set<Statistic> getListStatistics() {
+        return listStatistics;
+    }
+
+    public void setListStatistics(Set<Statistic> listStatistics) {
+        this.listStatistics = listStatistics;
     }
 }

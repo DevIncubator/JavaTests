@@ -18,6 +18,9 @@ public class Role {
     @Column(name = "admin")
     private int admin;
 
+    @OneToOne(mappedBy = "role", fetch = FetchType.LAZY)
+    private User userR;
+
     public Role() {
     }
 
@@ -51,5 +54,13 @@ public class Role {
 
     public void setAdmin(int admin) {
         this.admin = admin;
+    }
+
+    public User getUserR() {
+        return userR;
+    }
+
+    public void setUserR(User userR) {
+        this.userR = userR;
     }
 }
