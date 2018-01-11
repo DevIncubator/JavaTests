@@ -18,7 +18,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setSuffix(".html");
+        viewResolver.setSuffix(".jsp");
         viewResolver.setContentType("text/html; charset=utf-8");
         return viewResolver;
     }
@@ -26,5 +26,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("resources/css/**").addResourceLocations("/resources/css/");
+        registry.addResourceHandler("WEB/WEB-INF/views/css/**").addResourceLocations("/WEB/WEB-INF/views/css/");
     }
 }

@@ -9,7 +9,7 @@ public class AppController {
 
     @RequestMapping("/")
     public String hello() {
-        return "index";
+        return "hello2";
     }
 
 }
