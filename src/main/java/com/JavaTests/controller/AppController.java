@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AppController {
 
-    @Autowired
-    RoleService roleService;
+//    @Autowired
+//    RoleService roleService;
 
     @RequestMapping("/")
     public String hello() {
         return "hello2";
     }
 
-    @RequestMapping(value = "/role/{rolePeople}", method = RequestMethod.GET)
-    @ResponseBody
-    public Role getRole(@PathVariable(value = "rolePeople") String rolePeople) {
-        return roleService.getRole(Integer.parseInt(rolePeople));
-    }
+//    @RequestMapping(value = "/role/{rolePeople}", method = RequestMethod.GET)
+//    @ResponseBody
+//    public Role getRole(@PathVariable(value = "rolePeople") String rolePeople) {
+//        return roleService.getRole(Integer.parseInt(rolePeople));
+//    }
 
 
 }
