@@ -11,6 +11,6 @@
     <title>Role</title>
 </head>
 <body>
-${rolePeople}
+${}
 </body>
 </html>

@@ -20,7 +20,7 @@ public class BasicDaoImpl implements BasicDao {
         Statement statement = null;
         try {
             init();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdeath", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdincubator", "root", "root");
             statement = connection.createStatement();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

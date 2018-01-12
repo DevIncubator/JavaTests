@@ -1,5 +1,7 @@
 package com.JavaTests.config;
 
+import com.JavaTests.service.RoleService;
+import com.JavaTests.service.impl.RoleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 public class AppConfig {
     @Autowired
     Environment environment;
+
+//    @Autowired
+//    RoleService roleService;
+
 
 //    @Bean
 //    public UserDetailsService userDetailsService() {
@@ -40,5 +46,11 @@ public class AppConfig {
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
+
+//    @Bean
+//    public RoleService roleService() {
+//        return new RoleServiceImpl();
+//    }
+
 
 }

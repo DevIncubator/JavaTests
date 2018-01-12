@@ -1,17 +1,28 @@
 package com.JavaTests.service.impl;
 
-import com.JavaTests.dao.RoleDao;
 import com.JavaTests.entity.Role;
+import com.JavaTests.repository.RoleRepository;
 import com.JavaTests.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public class RoleServiceImpl implements RoleService {
+@Service
+@Transactional
+public class RoleServiceImpl {
+
+//    @Autowired
+//    RoleDao roleDao;
 
     @Autowired
-    RoleDao roleDao;
+    RoleRepository roleRepository;
 
-    @Override
-    public Role getRole(int rolePeople) {
-        return roleDao.findByRole(rolePeople);
+//    @Override
+//    public Role getRole(int rolePeople) {
+//        return roleDao.findByRole(rolePeople);
+//    }
+
+    public Role getRole (int id) {
+        return roleRepository.findOne(id);
     }
 }

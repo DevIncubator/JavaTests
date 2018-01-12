@@ -6,8 +6,8 @@ public interface RoleService {
 
     /**
          * Get role people
-         * @param rolePeople - role people
+         * @param id - role people
          *  @return role people from BD
          */
-    Role getRole(int rolePeople);
+    Role getRole(int id);
 }

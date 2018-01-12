@@ -3,6 +3,7 @@ package com.JavaTests.controller;
 import com.JavaTests.entity.Role;
 import com.JavaTests.model.RoleModel;
 import com.JavaTests.service.RoleService;
+import com.JavaTests.service.impl.RoleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AppController {
 
-//    @Autowired
-//    RoleService roleService;
+    @Autowired
+    RoleServiceImpl roleServiceImpl;
 
     @Autowired
     RoleModel roleModel;
@@ -29,14 +30,19 @@ public class AppController {
 //    @RequestMapping(value = "/role/{rolePeople}", method = RequestMethod.GET)
 //    @ResponseBody
 //    public Role getRole(@PathVariable(value = "rolePeople") String rolePeople) {
-//        return roleService.getRole(Integer.parseInt(rolePeople));
+//        return roleServiceImpl.getRole(Integer.parseInt(rolePeople));
 //    }
 
-    @RequestMapping(value = "/getRole")
-    public String getRole(Model model) {
-        model.addAttribute("rolePeople", roleModel.getRole());
-        return "role";
+    @RequestMapping(value = "/getRole/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public Role getRole(@PathVariable int id) {
+        return roleServiceImpl.getRole(id);
     }
+
+//    @RequestMapping(value = "/getRole")
+//    public String getRole(Model model) {
+//        model.addAttribute("rolePeople", roleServiceImpl.getRole());
+//        return "role";
+//    }
 
 
 
