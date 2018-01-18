@@ -1,6 +1,7 @@
 package com.JavaTests.config;
 
-import com.JavaTests.service.RoleService;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -49,6 +50,11 @@ public class AppConfig {
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
+
+//    @Bean
+//    public TopicServiceImpl topicServiceImpl() {
+//        return new TopicServiceImpl();
+//    }
 
 /*    @Bean
     public RoleService roleService() {

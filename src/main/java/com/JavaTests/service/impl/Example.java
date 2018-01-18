@@ -12,17 +12,17 @@ package com.JavaTests.service.impl;
 //import java.util.Arrays;
 //import java.util.List;
 
-//@Component
-public class Example {
-//    @Autowired
-//    ExampleConponent exampleConponent;
+////@Component
+//public class Example {
+////    @Autowired
+////    ExampleConponent exampleConponent;
+////
+////    public List<User> getUsers(){
+////        ArrayList<User> users = new ArrayList<>();
+////        for (User user: exampleConponent.getUsers()) {
+////            users.add(user);
+////        }
+////        return users;
+////    }
 //
-//    public List<User> getUsers(){
-//        ArrayList<User> users = new ArrayList<>();
-//        for (User user: exampleConponent.getUsers()) {
-//            users.add(user);
-//        }
-//        return users;
-//    }
-
-}
+//}
