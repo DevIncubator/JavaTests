@@ -1,14 +1,15 @@
+/*
 package com.JavaTests.service.impl;
 
 import com.JavaTests.entity.Role;
 import com.JavaTests.repository.RoleRepository;
 import com.JavaTests.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
-@Transactional
+@Component
 public class RoleServiceImpl {
 
 //    @Autowired
@@ -26,3 +27,4 @@ public class RoleServiceImpl {
         return roleRepository.findOne(id);
     }
 }
+*/
