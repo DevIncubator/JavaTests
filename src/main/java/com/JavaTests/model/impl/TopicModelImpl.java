@@ -10,6 +10,7 @@ public class TopicModelImpl implements TopicModel {
 
     private String name;
     private String description;
+//    private int id;
 
     public TopicModelImpl() {
     }
@@ -20,7 +21,7 @@ public class TopicModelImpl implements TopicModel {
 
     @Override
     public String getTopic() {
-        String query = ("select name, description from topic");
+        String query = ("SELECT * FROM topic");
         TopicModelImpl topic = new TopicModelImpl();
         Connection connection = null;
         Statement statement = null;
@@ -32,8 +33,9 @@ public class TopicModelImpl implements TopicModel {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                topic.setDescription(resultSet.getString("description"));
+//                topic.setId(resultSet.getInt(0));
                 topic.setName(resultSet.getString("name"));
+                topic.setDescription(resultSet.getString("description"));
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -73,4 +75,12 @@ public class TopicModelImpl implements TopicModel {
     public void setDescription(String description) {
         this.description = description;
     }
+
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 }
