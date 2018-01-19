@@ -4,10 +4,10 @@
     <title>JavaTests main page</title>
 
     <!-- Bootstrap -->
-    <link href="/web/WEB-INF/views/css/bootstrap.css" rel="stylesheet">
+    <link href="/src/webapp/resources/bootstrap.css" rel="stylesheet">
 
     <!-- CSS -->
-    <link href="/web/WEB-INF/views/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/src/webapp/resources/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">

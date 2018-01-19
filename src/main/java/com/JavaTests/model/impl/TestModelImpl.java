@@ -1,21 +1,27 @@
 package com.JavaTests.model.impl;
 
 import com.JavaTests.dao.impl.BasicDaoImpl;
-import com.JavaTests.model.TopicModel;
+import com.JavaTests.entity.Test;
+import com.JavaTests.model.TestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @Component
-public class TopicModelImpl implements TopicModel {
+public class TestModelImpl implements TestModel{
 
     private String name;
     private String description;
 
+//    Test2 test2 = new Test2();
+
     @Autowired
     BasicDaoImpl basicDaoImpl;
 
-    public TopicModelImpl() {
+    public TestModelImpl() {
     }
 
 //    public static void init() throws ClassNotFoundException {
@@ -23,22 +29,22 @@ public class TopicModelImpl implements TopicModel {
 //    }
 
     @Override
-    public String getTopic() {
+    public Test getTest() {
+        Test test2 = new Test();
         basicDaoImpl.getConnection();
-        String query = ("SELECT * FROM topic");
-        TopicModelImpl topic = new TopicModelImpl();
+        String query = ("SELECT * FROM test");
+//        TestModelImpl test = new TestModelImpl();
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
-
         try {
             connection = basicDaoImpl.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                topic.setName(resultSet.getString("name"));
-                topic.setDescription(resultSet.getString("description"));
-            }
+                test2.setName(resultSet.getString("name"));
+                test2.setDescription(resultSet.getString("description"));
+                 }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -59,7 +65,8 @@ public class TopicModelImpl implements TopicModel {
                     }
             }
         }
-        return topic.getDescription() + " " + topic.getName();
+
+        return test2;
     }
 
     public String getName() {
@@ -77,5 +84,4 @@ public class TopicModelImpl implements TopicModel {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }

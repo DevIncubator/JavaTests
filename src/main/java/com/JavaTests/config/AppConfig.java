@@ -3,6 +3,7 @@ package com.JavaTests.config;
 
 
 
+import com.JavaTests.entity.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @PropertySource(value = {"classpath:util.properties"})
 public class AppConfig {
     Environment environment;
+
 //    RoleService roleService;
 
     @Autowired

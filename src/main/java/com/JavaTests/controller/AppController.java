@@ -1,12 +1,16 @@
 package com.JavaTests.controller;
 
 
+import com.JavaTests.entity.Test;
+import com.JavaTests.model.TestModel;
 import com.JavaTests.model.TopicModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -23,6 +27,9 @@ public class AppController {
 
     @Autowired
     TopicModel topicModel;
+
+    @Autowired
+    TestModel testModel;
 
     @RequestMapping("/")
     public String hello() {
@@ -59,11 +66,26 @@ public class AppController {
 //    }
 
     @RequestMapping(value = "/getTopic")
-    public String getRole(Model model) {
+    public String getTopic(Model model) {
         model.addAttribute("getTopic", topicModel.getTopic());
         return "topic";
     }
 
+//    @RequestMapping(value = "/getTest")
+//    public String getTest(Model model) {
+//        model.addAttribute("getTest", testModel.getTest());
+//        return "test";
+//    }
 
+    @RequestMapping(value = "/getTest", method = RequestMethod.POST, headers = "Accept=application/json")
+    public Test getTest() {
+        return testModel.getTest();
+    }
+
+    @RequestMapping(value = "/save")
+    public String save(Model model) {
+        model.addAttribute("save", testModel.getTest());
+        return "save";
+    }
 
 }
