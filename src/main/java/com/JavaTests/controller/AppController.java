@@ -2,6 +2,7 @@ package com.JavaTests.controller;
 
 
 import com.JavaTests.entity.Test;
+import com.JavaTests.model.RoleModel;
 import com.JavaTests.model.TestModel;
 import com.JavaTests.model.TopicModel;
 
@@ -30,6 +31,9 @@ public class AppController {
 
     @Autowired
     TestModel testModel;
+
+    @Autowired
+    RoleModel roleModel;
 
     @RequestMapping("/")
     public String hello() {
@@ -89,10 +93,21 @@ public class AppController {
         return "testSave";
     }
 
+    @RequestMapping(value = "/getRole")
+    public String getRole(Model model) {
+        model.addAttribute("getRole", roleModel.getRole());
+        return "role";
+    }
+
+    @RequestMapping(value = "/getRoleSave")
+    public String roleSave(Model model) {
+        model.addAttribute("roleSave", roleModel.getRoleSave());
+        return "roleSave";
+    }
 
 
 
-    @RequestMapping(value = "/getTestRest", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/getTestRest", method = RequestMethod.GET, headers = "Accept=application/json")
     public Test getTest() {
         return testModel.getTestRest();
     }
