@@ -16,20 +16,57 @@ public class TestModelImpl implements TestModel{
     private String name;
     private String description;
 
-//    Test2 test2 = new Test2();
-
     @Autowired
     BasicDaoImpl basicDaoImpl;
 
     public TestModelImpl() {
     }
 
-//    public static void init() throws ClassNotFoundException {
-//        Class.forName("com.mysql.jdbc.Driver");
-//    }
+    @Override
+    public String getTest() {
+        basicDaoImpl.getConnection();
+        String query = ("SELECT * FROM test");
+        TestModelImpl test = new TestModelImpl();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = basicDaoImpl.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                test.setName(resultSet.getString("name"));
+                test.setDescription(resultSet.getString("description"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+                if (statement != null)
+                    try {
+                        statement.close();
+                    } catch (SQLException ignore) {
+                    }
+                if (connection != null)
+                    try {
+                        connection.close();
+                    } catch (SQLException ignore) {
+                    }
+            }
+        }
+        return test.getName() + " " + test.getDescription();
+    }
+
+
+
 
     @Override
-    public Test getTest() {
+    public Test getTestRest() {
         Test test2 = new Test();
         basicDaoImpl.getConnection();
         String query = ("SELECT * FROM test");
@@ -67,6 +104,46 @@ public class TestModelImpl implements TestModel{
         }
 
         return test2;
+    }
+
+    @Override
+    public String getTestSave() {
+        basicDaoImpl.getConnection();
+        String query = ("SELECT * FROM test");
+        TestModelImpl test = new TestModelImpl();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = basicDaoImpl.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                test.setName(resultSet.getString("name"));
+                test.setDescription(resultSet.getString("description"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+                if (statement != null)
+                    try {
+                        statement.close();
+                    } catch (SQLException ignore) {
+                    }
+                if (connection != null)
+                    try {
+                        connection.close();
+                    } catch (SQLException ignore) {
+                    }
+            }
+        }
+        return test.getName() + " " + test.getDescription();
     }
 
     public String getName() {

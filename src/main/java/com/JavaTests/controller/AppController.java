@@ -78,9 +78,15 @@ public class AppController {
     }
 
     @RequestMapping(value = "/getTopicSave")
-    public String save(Model model) {
-        model.addAttribute("save", topicModel.getTopicSave());
+    public String topicSave(Model model) {
+        model.addAttribute("topicSave", topicModel.getTopicSave());
         return "topicSave";
+    }
+
+    @RequestMapping(value = "/getTestSave")
+    public String testSave(Model model) {
+        model.addAttribute("testSave", testModel.getTestSave());
+        return "testSave";
     }
 
 
@@ -88,7 +94,7 @@ public class AppController {
 
     @RequestMapping(value = "/getTestRest", method = RequestMethod.POST, headers = "Accept=application/json")
     public Test getTest() {
-        return testModel.getTest();
+        return testModel.getTestRest();
     }
 
 
