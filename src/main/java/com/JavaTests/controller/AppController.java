@@ -71,21 +71,25 @@ public class AppController {
         return "topic";
     }
 
-//    @RequestMapping(value = "/getTest")
-//    public String getTest(Model model) {
-//        model.addAttribute("getTest", testModel.getTest());
-//        return "test";
-//    }
+    @RequestMapping(value = "/getTest")
+    public String getTest(Model model) {
+        model.addAttribute("getTest", testModel.getTest());
+        return "test";
+    }
 
-    @RequestMapping(value = "/getTest", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/getTopicSave")
+    public String save(Model model) {
+        model.addAttribute("save", topicModel.getTopicSave());
+        return "topicSave";
+    }
+
+
+
+
+    @RequestMapping(value = "/getTestRest", method = RequestMethod.POST, headers = "Accept=application/json")
     public Test getTest() {
         return testModel.getTest();
     }
 
-    @RequestMapping(value = "/save")
-    public String save(Model model) {
-        model.addAttribute("save", testModel.getTest());
-        return "save";
-    }
 
 }

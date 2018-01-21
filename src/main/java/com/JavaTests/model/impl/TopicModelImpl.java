@@ -18,12 +18,48 @@ public class TopicModelImpl implements TopicModel {
     public TopicModelImpl() {
     }
 
-//    public static void init() throws ClassNotFoundException {
-//        Class.forName("com.mysql.jdbc.Driver");
-//    }
-
     @Override
     public String getTopic() {
+        basicDaoImpl.getConnection();
+        String query = ("SELECT * FROM topic");
+        TopicModelImpl topic = new TopicModelImpl();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = basicDaoImpl.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                topic.setName(resultSet.getString("name"));
+                topic.setDescription(resultSet.getString("description"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+                if (statement != null)
+                    try {
+                        statement.close();
+                    } catch (SQLException ignore) {
+                    }
+                if (connection != null)
+                    try {
+                        connection.close();
+                    } catch (SQLException ignore) {
+                    }
+            }
+        }
+        return topic.getDescription() + " " + topic.getName();
+    }
+
+    @Override
+    public String getTopicSave() {
         basicDaoImpl.getConnection();
         String query = ("SELECT * FROM topic");
         TopicModelImpl topic = new TopicModelImpl();

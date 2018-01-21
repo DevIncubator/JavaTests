@@ -25,14 +25,14 @@ public class HibernateConfig {
         this.environment = environment;
     }
 
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
-        localSessionFactoryBean.setDataSource(dataSource());
-        localSessionFactoryBean.setPackagesToScan("com.JavaTests.entity");
-        localSessionFactoryBean.setHibernateProperties(hibernateProperties());
-        return localSessionFactoryBean;
-    }
+//    @Bean
+//    public LocalSessionFactoryBean sessionFactory() {
+//        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
+//        localSessionFactoryBean.setDataSource(dataSource());
+//        localSessionFactoryBean.setPackagesToScan("com.JavaTests.entity");
+//        localSessionFactoryBean.setHibernateProperties(hibernateProperties());
+//        return localSessionFactoryBean;
+//    }
 
     @Bean
     public DataSource dataSource() {
@@ -54,11 +54,11 @@ public class HibernateConfig {
         return properties;
     }
 
-    @Bean
-    @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory);
-        return transactionManager;
-    }
+//    @Bean
+//    @Autowired
+//    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+//        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+//        transactionManager.setSessionFactory(sessionFactory);
+//        return transactionManager;
+//    }
 }
