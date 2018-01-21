@@ -70,7 +70,7 @@ public class TestModelImpl implements TestModel{
         Test test2 = new Test();
         basicDaoImpl.getConnection();
         String query = ("SELECT * FROM test");
-//        TestModelImpl test = new TestModelImpl();
+        TestModelImpl test = new TestModelImpl();
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -102,7 +102,6 @@ public class TestModelImpl implements TestModel{
                     }
             }
         }
-
         return test2;
     }
 

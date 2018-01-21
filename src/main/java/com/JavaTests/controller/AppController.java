@@ -104,10 +104,9 @@ public class AppController {
         model.addAttribute("roleSave", roleModel.getRoleSave());
         return "roleSave";
     }
+    
 
-
-
-    @RequestMapping(value = "/getTestRest", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/getTestRest", method = RequestMethod.POST, headers = "Accept=application/json")
     public Test getTest() {
         return testModel.getTestRest();
     }
