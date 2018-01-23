@@ -59,13 +59,13 @@ public class Test {
         this.topic = topic;
     }
 
-    public Set<Question> getListQuestion() {
-        return listQuestion;
-    }
-
-    public void setListQuestion(Set<Question> listQuestion) {
-        this.listQuestion = listQuestion;
-    }
+//    public Set<Question> getListQuestion() {
+//        return listQuestion;
+//    }
+//
+//    public void setListQuestion(Set<Question> listQuestion) {
+//        this.listQuestion = listQuestion;
+//    }
 
 
 }

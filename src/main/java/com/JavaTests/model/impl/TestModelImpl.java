@@ -66,11 +66,11 @@ public class TestModelImpl implements TestModel{
 
 
     @Override
-    public Test getTestRest() {
+    public Test getTestRest(Test test) {
         Test test2 = new Test();
         basicDaoImpl.getConnection();
         String query = ("SELECT * FROM test");
-        TestModelImpl test = new TestModelImpl();
+//        TestModelImpl test = new TestModelImpl();
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
