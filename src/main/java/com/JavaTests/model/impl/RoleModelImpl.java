@@ -1,6 +1,7 @@
 package com.JavaTests.model.impl;
 
 import com.JavaTests.dao.impl.BasicDaoImpl;
+import com.JavaTests.entity.Role;
 import com.JavaTests.model.RoleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -96,6 +97,46 @@ public class RoleModelImpl implements RoleModel {
                 }
         }
         return role.getAdmin() + " " + role.getUser() + " " + role.getTutor();
+    }
+
+    @Override
+    public Role getRoleRest(Role role) {
+        Role role2 = new Role();
+        basicDaoImpl.getConnection();
+        String query = ("SELECT * FROM role");
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = basicDaoImpl.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                role2.setUser(resultSet.getInt("user"));
+                role2.setTutor(resultSet.getInt("tutor"));
+                role2.setAdmin(resultSet.getInt("admin"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+                if (statement != null)
+                    try {
+                        statement.close();
+                    } catch (SQLException ignore) {
+                    }
+                if (connection != null)
+                    try {
+                        connection.close();
+                    } catch (SQLException ignore) {
+                    }
+            }
+        }
+        return role2;
     }
 
     public long getUser() {

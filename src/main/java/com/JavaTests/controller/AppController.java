@@ -1,6 +1,7 @@
 package com.JavaTests.controller;
 
 
+import com.JavaTests.entity.Role;
 import com.JavaTests.entity.Test;
 import com.JavaTests.entity.Topic;
 import com.JavaTests.model.RoleModel;
@@ -121,5 +122,11 @@ public class AppController {
         return topic;
     }
 
+    @RequestMapping(value = "/getRoleRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Role getRole(@RequestBody Role role) {
+        roleModel.getRoleRest(role);
+        return role;
+    }
 
 }
