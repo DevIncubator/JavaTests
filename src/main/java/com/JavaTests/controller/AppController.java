@@ -2,6 +2,7 @@ package com.JavaTests.controller;
 
 
 import com.JavaTests.entity.Test;
+import com.JavaTests.entity.Topic;
 import com.JavaTests.model.RoleModel;
 import com.JavaTests.model.TestModel;
 import com.JavaTests.model.TopicModel;
@@ -106,12 +107,18 @@ public class AppController {
         return "roleSave";
     }
 
-
     @RequestMapping(value = "/getTestRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Test getTest(@RequestBody Test test) {
         testModel.getTestRest(test);
         return test;
+    }
+
+    @RequestMapping(value = "/getTopicRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Topic getTopic(@RequestBody Topic topic) {
+        topicModel.getTopicRest(topic);
+        return topic;
     }
 
 
