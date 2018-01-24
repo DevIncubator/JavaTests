@@ -139,6 +139,46 @@ public class RoleModelImpl implements RoleModel {
         return role2;
     }
 
+    @Override
+    public Role getRoleSaveRest(Role role) {
+        Role role3 = new Role();
+        basicDaoImpl.getConnection();
+        String query = ("SELECT * FROM role");
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = basicDaoImpl.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                role3.setUser(resultSet.getInt("user"));
+                role3.setTutor(resultSet.getInt("tutor"));
+                role3.setAdmin(resultSet.getInt("admin"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+                if (statement != null)
+                    try {
+                        statement.close();
+                    } catch (SQLException ignore) {
+                    }
+                if (connection != null)
+                    try {
+                        connection.close();
+                    } catch (SQLException ignore) {
+                    }
+            }
+        }
+        return role3;
+    }
+
     public long getUser() {
         return user;
     }

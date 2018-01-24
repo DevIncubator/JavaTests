@@ -8,4 +8,6 @@ public interface RoleModel {
     String getRoleSave();
 
     Role getRoleRest(Role role);
+
+    Role getRoleSaveRest(Role role);
 }

@@ -110,36 +110,43 @@ public class AppController {
 
     @RequestMapping(value = "/getTestRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public Test getTest(@RequestBody Test test) {
+    public Test getTestRest(@RequestBody Test test) {
         testModel.getTestRest(test);
         return test;
     }
 
     @RequestMapping(value = "/getTestSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public Test getTestSave(@RequestBody Test test) {
+    public Test getTestSaveRest(@RequestBody Test test) {
         testModel.getTestSaveRest(test);
         return test;
     }
 
     @RequestMapping(value = "/getTopicRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public Topic getTopic(@RequestBody Topic topic) {
+    public Topic getTopicRest(@RequestBody Topic topic) {
         topicModel.getTopicRest(topic);
         return topic;
     }
 
     @RequestMapping(value = "/getTopicSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public Topic getTopicSave(@RequestBody Topic topic) {
-        topicModel.getTopicRest(topic);
+    public Topic getTopicSaveRest(@RequestBody Topic topic) {
+        topicModel.getTopicSaveRest(topic);
         return topic;
     }
 
     @RequestMapping(value = "/getRoleRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public Role getRole(@RequestBody Role role) {
+    public Role getRoleRest(@RequestBody Role role) {
         roleModel.getRoleRest(role);
+        return role;
+    }
+
+    @RequestMapping(value = "/getRoleSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Role getRoleSaveRest(@RequestBody Role role) {
+        roleModel.getRoleSaveRest(role);
         return role;
     }
 
