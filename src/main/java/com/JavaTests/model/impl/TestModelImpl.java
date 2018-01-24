@@ -70,7 +70,6 @@ public class TestModelImpl implements TestModel{
         Test test2 = new Test();
         basicDaoImpl.getConnection();
         String query = ("SELECT * FROM test");
-//        TestModelImpl test = new TestModelImpl();
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -103,6 +102,45 @@ public class TestModelImpl implements TestModel{
             }
         }
         return test2;
+    }
+
+    @Override
+    public Test getTestSaveRest(Test test) {
+        Test test3 = new Test();
+        basicDaoImpl.getConnection();
+        String query = ("SELECT * FROM test");
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = basicDaoImpl.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                test3.setName(resultSet.getString("name"));
+                test3.setDescription(resultSet.getString("description"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+                if (statement != null)
+                    try {
+                        statement.close();
+                    } catch (SQLException ignore) {
+                    }
+                if (connection != null)
+                    try {
+                        connection.close();
+                    } catch (SQLException ignore) {
+                    }
+            }
+        }
+        return test3;
     }
 
     @Override

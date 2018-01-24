@@ -115,6 +115,13 @@ public class AppController {
         return test;
     }
 
+    @RequestMapping(value = "/getTestSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Test getTestSave(@RequestBody Test test) {
+        testModel.getTestSaveRest(test);
+        return test;
+    }
+
     @RequestMapping(value = "/getTopicRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Topic getTopic(@RequestBody Topic topic) {
@@ -128,5 +135,7 @@ public class AppController {
         roleModel.getRoleRest(role);
         return role;
     }
+
+
 
 }
