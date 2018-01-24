@@ -129,6 +129,13 @@ public class AppController {
         return topic;
     }
 
+    @RequestMapping(value = "/getTopicSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Topic getTopicSave(@RequestBody Topic topic) {
+        topicModel.getTopicRest(topic);
+        return topic;
+    }
+
     @RequestMapping(value = "/getRoleRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Role getRole(@RequestBody Role role) {

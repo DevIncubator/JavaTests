@@ -9,4 +9,6 @@ public interface TopicModel {
     String getTopicSave();
 
     Topic getTopicRest(Topic topic);
+
+    Topic getTopicSaveRest(Topic topic);
 }

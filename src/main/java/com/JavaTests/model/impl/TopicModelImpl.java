@@ -139,6 +139,45 @@ public class TopicModelImpl implements TopicModel {
         return topic2;
     }
 
+    @Override
+    public Topic getTopicSaveRest(Topic topic) {
+        Topic topic3 = new Topic();
+        basicDaoImpl.getConnection();
+        String query = ("SELECT * FROM topic");
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = basicDaoImpl.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                topic3.setName(resultSet.getString("name"));
+                topic3.setDescription(resultSet.getString("description"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+                if (statement != null)
+                    try {
+                        statement.close();
+                    } catch (SQLException ignore) {
+                    }
+                if (connection != null)
+                    try {
+                        connection.close();
+                    } catch (SQLException ignore) {
+                    }
+            }
+        }
+        return topic3;
+    }
+
     public String getName() {
         return name;
     }
