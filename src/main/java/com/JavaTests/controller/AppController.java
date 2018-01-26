@@ -43,6 +43,11 @@ public class AppController {
         return "hello2";
     }
 
+    @RequestMapping(value = "/secure")
+    public String secure() {
+        return "/secure";
+    }
+
 //    @RequestMapping(value = "/role/{rolePeople}", method = RequestMethod.GET)
 //    @ResponseBody
 //    public Role getRole(@PathVariable(value = "rolePeople") String rolePeople) {
