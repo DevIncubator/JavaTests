@@ -13,6 +13,7 @@ CREATE TABLE `role` (
   `user` int(11) DEFAULT NULL,
   `tutor` int(11) DEFAULT NULL,
   `admin` int(11) DEFAULT NULL,
+  `role` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
