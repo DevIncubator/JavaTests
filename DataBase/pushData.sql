@@ -51,12 +51,12 @@ INSERT INTO answer (description, correct, questionId) VALUES ("for", false, 5);
 INSERT INTO answer (description, correct, questionId) VALUES ("exit", false, 5);
 INSERT INTO answer (description, correct, questionId) VALUES ("break", true, 5);
 
-INSERT INTO role (user, tutor, admin) VALUES (1, 0, 0);
-INSERT INTO role (user, tutor, admin) VALUES (0, 1, 0);
-INSERT INTO role (user, tutor, admin) VALUES (0, 0, 1);
-INSERT INTO role (user, tutor, admin) VALUES (0, 1, 1);
-INSERT INTO role (user, tutor, admin) VALUES (1, 1, 1);
-INSERT INTO role (user, tutor, admin) VALUES (1, 1, 0);
+INSERT INTO role (id, user, tutor, admin) VALUES (1, 1, 0, 0);
+INSERT INTO role (id, user, tutor, admin) VALUES (2, 0, 1, 0);
+INSERT INTO role (id, user, tutor, admin) VALUES (3, 0, 0, 1);
+INSERT INTO role (id, user, tutor, admin) VALUES (4, 0, 1, 1);
+INSERT INTO role (id, user, tutor, admin) VALUES (5, 1, 1, 1);
+INSERT INTO role (id, user, tutor, admin) VALUES (6, 1, 1, 0);
 
 INSERT INTO statistic (correct, questionId) VALUES (true, 1);
 INSERT INTO statistic (correct, questionId) VALUES (false, 1);
@@ -68,3 +68,8 @@ INSERT INTO statistic (correct, questionId) VALUES (true, 4);
 INSERT INTO statistic (correct, questionId) VALUES (false, 4);
 INSERT INTO statistic (correct, questionId) VALUES (true, 5);
 INSERT INTO statistic (correct, questionId) VALUES (false, 5);
+
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('1', 'Kirill', 'Sereda', 'ksereda', '12345', '3');
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('2', 'Alex', 'Rybin', 'alex23', '123123', '2');
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('3', 'Petya', 'Petrov', 'petka', '1122', '1');
+
