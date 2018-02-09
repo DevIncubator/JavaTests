@@ -3,6 +3,7 @@ package com.JavaTests.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{WebConfig.class};
@@ -18,8 +19,4 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         return new String[]{"/"};
     }
 
-//    @Override
-//    protected Class<?>[] getRootConfigClasses() {
-//        return new Class[] { SecurityConfig.class, MemberServiceImpl.class };
-//    }
 }

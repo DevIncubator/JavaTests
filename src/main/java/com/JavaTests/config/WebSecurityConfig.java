@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
  */
 @Configuration
 @EnableWebSecurity
-//@ComponentScan("com")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
