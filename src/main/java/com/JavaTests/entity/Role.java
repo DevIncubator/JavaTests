@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "user")
     private int user;
@@ -18,17 +18,30 @@ public class Role {
     @Column(name = "admin")
     private int admin;
 
-    @OneToOne(mappedBy = "role", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "role", fetch = FetchType.EAGER)
     private User userR;
 
     public Role() {
     }
 
-    public long getId() {
+    public Role(int user, int tutor, int admin, User userR) {
+        this.user = user;
+        this.tutor = tutor;
+        this.admin = admin;
+        this.userR = userR;
+    }
+
+    public Role(int user, int tutor, int admin) {
+        this.user = user;
+        this.tutor = tutor;
+        this.admin = admin;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -62,5 +75,40 @@ public class Role {
 
     public void setUserR(User userR) {
         this.userR = userR;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", user=" + user +
+                ", tutor=" + tutor +
+                ", admin=" + admin +
+                '}';
+    }
+
+        @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Role)) return false;
+
+        Role role = (Role) o;
+
+        if (getId() != role.getId()) return false;
+        if (getUser() != role.getUser()) return false;
+        if (getTutor() != role.getTutor()) return false;
+        if (getAdmin() != role.getAdmin()) return false;
+        return getUserR().equals(role.getUserR());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + getUser();
+        result = 31 * result + getTutor();
+        result = 31 * result + getAdmin();
+        result = 31 * result + getUserR().hashCode();
+        return result;
     }
 }

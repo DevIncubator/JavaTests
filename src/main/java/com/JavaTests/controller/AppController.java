@@ -1,159 +1,70 @@
 package com.JavaTests.controller;
 
-
-import com.JavaTests.entity.Role;
-import com.JavaTests.entity.Test;
-import com.JavaTests.entity.Topic;
-import com.JavaTests.model.RoleModel;
-import com.JavaTests.model.TestModel;
-import com.JavaTests.model.TopicModel;
-
+import com.JavaTests.entity.User;
+import com.JavaTests.services.security.SecurityService;
+import com.JavaTests.services.userService.UserService;
+import com.JavaTests.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AppController {
 
-//    @Autowired
-//    Example example;
-
-//    @Autowired
-//    RoleModel roleModel;
-//
-//    @Autowired
-//    TopicServiceImpl topicServiceImpl;
+    @Autowired
+    private UserService userService;
 
     @Autowired
-    TopicModel topicModel;
+    private UserValidator userValidator;
 
     @Autowired
-    TestModel testModel;
+    private SecurityService securityService;
 
-    @Autowired
-    RoleModel roleModel;
-
-    @RequestMapping("/")
-    public String hello() {
-        return "hello2";
-    }
-
-    @RequestMapping(value = "/secure")
-    public String secure() {
-        return "/secure";
-    }
-
-//    @RequestMapping(value = "/role/{rolePeople}", method = RequestMethod.GET)
-//    @ResponseBody
-//    public Role getRole(@PathVariable(value = "rolePeople") String rolePeople) {
-//        return roleServiceImpl.getRole(Integer.parseInt(rolePeople));
+//    @RequestMapping(value = "/")
+//    public String hello() {
+//        return "index";
 //    }
 
-/*    @RequestMapping(value = "/getRole/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-    public Role getRole(@PathVariable int id) {
-        return roleServiceImpl.getRole(id);
-    }*/
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
 
-//    @RequestMapping(value = "/getUsers/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-//    public ArrayList<User> getRole(@PathVariable int id) {
-//        System.out.println("User : " + id);
-//        return (ArrayList<User>) example.getUsers();
-//    }
-
-//    @RequestMapping(value = "/getTheme/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-//    public ArrayList<Topic> getTheme(@PathVariable int id) {
-//        System.out.println("Theme : " + id);
-//        return (ArrayList<Topic>) topicServiceImpl.getTheme();
-//    }
-
-//    @RequestMapping(value = "/getRole")
-//    public String getRole(Model model) {
-//        model.addAttribute("rolePeople", roleServiceImpl.getRole());
-//        return "role";
-//    }
-
-    @RequestMapping(value = "/getTopic")
-    public String getTopic(Model model) {
-        model.addAttribute("getTopic", topicModel.getTopic());
-        return "topic";
+        return "security/registration";
     }
 
-    @RequestMapping(value = "/getTest")
-    public String getTest(Model model) {
-        model.addAttribute("getTest", testModel.getTest());
-        return "test";
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+        userValidator.validate(userForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "security/registration";
+        }
+
+        userService.save(userForm);
+
+        securityService.autologin(userForm.getLogin(), userForm.getPassword());
+
+        return "redirect:/welcome";
     }
 
-    @RequestMapping(value = "/getTopicSave")
-    public String topicSave(Model model) {
-        model.addAttribute("topicSave", topicModel.getTopicSave());
-        return "topicSave";
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
+
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
+
+        return "security/login";
     }
 
-    @RequestMapping(value = "/getTestSave")
-    public String testSave(Model model) {
-        model.addAttribute("testSave", testModel.getTestSave());
-        return "testSave";
-    }
-
-    @RequestMapping(value = "/getRole")
-    public String getRole(Model model) {
-        model.addAttribute("getRole", roleModel.getRole());
-        return "role";
-    }
-
-    @RequestMapping(value = "/getRoleSave")
-    public String roleSave(Model model) {
-        model.addAttribute("roleSave", roleModel.getRoleSave());
-        return "roleSave";
-    }
-
-    @RequestMapping(value = "/getTestRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public Test getTestRest(@RequestBody Test test) {
-        return testModel.getTestRest(test);
-    }
-
-    @RequestMapping(value = "/getTestSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public Test getTestSaveRest(@RequestBody Test test) {
-        return testModel.getTestSaveRest(test);
-    }
-
-    @RequestMapping(value = "/getTopicRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public Topic getTopicRest(@RequestBody Topic topic) {
-        return topicModel.getTopicRest(topic);
-    }
-
-    @RequestMapping(value = "/getTopicSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public Topic getTopicSaveRest(@RequestBody Topic topic) {
-        return topicModel.getTopicSaveRest(topic);
-    }
-
-    @RequestMapping(value = "/getRoleRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public Role getRoleRest(@RequestBody Role role) {
-        return roleModel.getRoleRest(role);
-    }
-
-    @RequestMapping(value = "/getRoleSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public Role getRoleSaveRest(@RequestBody Role role) {
-        return roleModel.getRoleSaveRest(role);
-    }
-
-    @RequestMapping(value = {"/password/{password}"}, method = RequestMethod.GET)
-    public ModelAndView passwordEncode(@PathVariable("password") String password) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("password");
-        modelAndView.addObject("crypt", new BCryptPasswordEncoder().encode(password));
-        return modelAndView;  // вернем пароль в закриптовонном виде
+    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+    public String welcome(Model model) {
+        return "security/welcome";
     }
 
 }

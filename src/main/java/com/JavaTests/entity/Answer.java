@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "description")
     private String description;
@@ -15,18 +15,24 @@ public class Answer {
     @Column(name = "correct")
     private boolean correct;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "questionId")
-    private Question quest;
+    private Question question;
 
     public Answer() {
     }
 
-    public long getId() {
+    public Answer(String description, boolean correct, Question question) {
+        this.description = description;
+        this.correct = correct;
+        this.question = question;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,11 +52,43 @@ public class Answer {
         this.correct = correct;
     }
 
-    public Question getQuest() {
-        return quest;
+    public Question getQuestion() {
+        return question;
     }
 
-    public void setQuest(Question quest) {
-        this.quest = quest;
+    public void setQuestion(Question quest) {
+        this.question = quest;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", correct=" + correct +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Answer)) return false;
+
+        Answer answer = (Answer) o;
+
+        if (getId() != answer.getId()) return false;
+        if (isCorrect() != answer.isCorrect()) return false;
+        if (!getDescription().equals(answer.getDescription())) return false;
+        return getQuestion().equals(answer.getQuestion());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + getDescription().hashCode();
+        result = 31 * result + (isCorrect() ? 1 : 0);
+        result = 31 * result + getQuestion().hashCode();
+        return result;
     }
 }

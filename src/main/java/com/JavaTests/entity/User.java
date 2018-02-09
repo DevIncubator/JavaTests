@@ -1,15 +1,14 @@
 package com.JavaTests.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "firstName")
     private String firstName;
@@ -21,23 +20,32 @@ public class User {
     private String login;
 
     @Column(name = "password")
-    private int password;
+    private String password;
 
     @OneToOne
     @PrimaryKeyJoinColumn(name = "roleId")
     private Role role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private Set<Statistic> listStatistics = new HashSet<>();
+//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+//    private List<Statistic> listStatistics = new ArrayList<>();
 
     public User() {
     }
 
-    public long getId() {
+    public User(String firstName, boolean lastName, String login, String password, Role role, List<Statistic> listStatistics) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+//        this.listStatistics = listStatistics;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,11 +73,11 @@ public class User {
         this.login = login;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -80,12 +88,54 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+//
+//    public List<Statistic> getListStatistics() {
+//        return listStatistics;
+//    }
+//
+//    public void setListStatistics(List<Statistic> listStatistics) {
+//        this.listStatistics = listStatistics;
+//    }
 
-    public Set<Statistic> getListStatistics() {
-        return listStatistics;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName=" + lastName +
+                ", login='" + login + '\'' +
+                ", password=" + password +
+                ", role=" + role +
+//                ", listStatistics=" + listStatistics +
+                '}';
     }
 
-    public void setListStatistics(Set<Statistic> listStatistics) {
-        this.listStatistics = listStatistics;
-    }
+//        @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof User)) return false;
+//
+//        User user = (User) o;
+//
+//        if (getId() != user.getId()) return false;
+//        if (isLastName() != user.isLastName()) return false;
+//        if (getPassword() != user.getPassword()) return false;
+//        if (!getFirstName().equals(user.getFirstName())) return false;
+//        if (!getLogin().equals(user.getLogin())) return false;
+//        if (!getRole().equals(user.getRole())) return false;
+//        return getListStatistics() != null ? getListStatistics().equals(user.getListStatistics()) : user.getListStatistics() == null;
+//
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = getId();
+//        result = 31 * result + getFirstName().hashCode();
+//        result = 31 * result + (isLastName() ? 1 : 0);
+//        result = 31 * result + getLogin().hashCode();
+//        result = 31 * result + getPassword();
+//        result = 31 * result + getRole().hashCode();
+//        result = 31 * result + (getListStatistics() != null ? getListStatistics().hashCode() : 0);
+//        return result;
+//    }
 }
