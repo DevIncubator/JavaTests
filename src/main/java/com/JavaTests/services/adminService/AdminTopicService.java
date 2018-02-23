@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -25,7 +27,18 @@ public class AdminTopicService {
         return Lists.newArrayList(topicRepository.findAll());
     }
 
-    public Topic getTopicRest(Topic topic) {
-        return (Topic) topicRepository.findAll();
+//    public Topic getTopicRest(Topic topic) {
+//        return topicRepository.findAll(topic);
+//    }
+
+    public List<Topic> getTopicRest(Topic topic) {
+        List<Topic> topicsList = new ArrayList<>();
+        Iterator<Topic> iterator = topicRepository.findAll().iterator();
+        while (iterator.hasNext()) {
+            topicsList.add(iterator.next());
+        }
+        return topicsList;
     }
+
+
 }

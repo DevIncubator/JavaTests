@@ -24,16 +24,16 @@ public class AdminTopicController {
         this.adminTopicService = adminTopicService;
     }
 
-    // получение всех Topic при нажатии на стрелочку
+    // получение всех Topic при нажатии на стрелочку (jsp)
     @RequestMapping(value = "/getTopic", method = RequestMethod.GET, headers = "Accept=application/json")
     public String getTopic(Model model) {
         List<Topic> topicList = adminTopicService.getTopics();
         model.addAttribute("topic", new Topic());
         model.addAttribute("topicList", topicList);
         return "admin/topic";
-    }
+}
 
-    // получение всех Topic при вводе в поле
+    // получение всех Topic при вводе в поле (jsp)
     @RequestMapping(value = "/getTopicAutoSave", method = RequestMethod.GET, headers = "Accept=application/json")
     public String getTopicAutoSave(Model model) {
         List<Topic> topicList = adminTopicService.getTopics();
@@ -42,11 +42,18 @@ public class AdminTopicController {
         return "admin/topic";
     }
 
-
+    // получение всех Topic при нажатии на стрелочку (REST)
     @RequestMapping(value = "/getTopicRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public Topic getTopicRest(@RequestBody Topic topic) {
-        return adminTopicService.getTopicRest(topic);
+    public void getTopicRest(@RequestBody Topic topic) {
+        adminTopicService.getTopicRest(topic);
+    }
+
+    // получение всех Topic при вводе в поле (REST)
+    @RequestMapping(value = "/getTopicAutoSaveRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public void getTopicAutoSaveRest(@RequestBody Topic topic) {
+        adminTopicService.getTopicRest(topic);
     }
 
 //    @RequestMapping(value = "/user/", method = RequestMethod.GET)

@@ -17,7 +17,6 @@ import java.util.List;
 public class AdminRoleController {
 
     private AdminRoleService adminRoleService;
-    private AdminTopicService adminTopicService;
 
     @Autowired
     public AdminRoleController(AdminRoleService adminRoleService) {
@@ -30,15 +29,13 @@ public class AdminRoleController {
 //        return "role";
 //    }
 
-
 //    @RequestMapping(value = "/getRole", method = RequestMethod.GET, headers = "Accept=application/json")
 //    public String getRole(Model model) {
 //        model.addAttribute("getRole", adminRoleService.getRole());
 //        return "admin/role";
 //    }
 
-
-
+    // получение всех Roles при нажатии на стрелочку (jsp)
     @RequestMapping(value = "/getRole", method = RequestMethod.GET, headers = "Accept=application/json")
     public String getRole(Model model) {
         List<Role> roleList = adminRoleService.getRoles();
@@ -47,13 +44,15 @@ public class AdminRoleController {
         return "admin/role";
     }
 
-    @RequestMapping(value = "/getTopic", method = RequestMethod.GET, headers = "Accept=application/json")
-    public String getTopic(Model model) {
-        List<Topic> topicList = adminTopicService.getTopics();
-        model.addAttribute("topic", new Topic());
-        model.addAttribute("topicList", topicList);
-        return "admin/topic";
+    // получение всех Toles при вводе в поле (jsp)
+    @RequestMapping(value = "/getRoleAutoSave", method = RequestMethod.GET, headers = "Accept=application/json")
+    public String getRoleAutoSave(Model model) {
+        List<Role> roleList = adminRoleService.getRoles();
+        model.addAttribute("role", new Role());
+        model.addAttribute("roleList", roleList);
+        return "admin/role";
     }
+
 
 
 //    @RequestMapping(value = {"/getRole/{roleId}"}, method = RequestMethod.GET)
