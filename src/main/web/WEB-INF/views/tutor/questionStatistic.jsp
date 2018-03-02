@@ -12,7 +12,7 @@
     <title>Tutor Question tatistic</title>
 
     <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
-    <link href="/css/tableStyle.css" rel="stylesheet">
+    <link href="/css/tutor/tableStyle.css" rel="stylesheet">
 
 
 </head>

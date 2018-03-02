@@ -11,5 +11,6 @@ bin
 out
 /build
 /target/
+/classes/
 .gitignore
 .gitexcludes
