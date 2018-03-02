@@ -27,6 +27,11 @@ public class Test implements Serializable{
     public Test() {
     }
 
+    public Test(String name, Topic topic) {
+        this.topic = topic;
+        this.name = name;
+    }
+
     public Test(int id, String name, String description) {
         this.id = id;
         this.name = name;

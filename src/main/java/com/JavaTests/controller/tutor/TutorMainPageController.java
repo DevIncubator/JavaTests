@@ -1,0 +1,55 @@
+package com.JavaTests.controller.tutor;
+
+import com.JavaTests.entity.Answer;
+import com.JavaTests.entity.Question;
+import com.JavaTests.entity.Topic;
+import com.JavaTests.services.tutorService.AnswerService;
+import com.JavaTests.services.tutorService.QuestionService;
+import com.JavaTests.services.tutorService.TestService;
+import com.JavaTests.services.tutorService.TopicService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/tutor/tutorMain")
+public class TutorMainPageController {
+
+    @Autowired
+    private TopicService topicService;
+
+    @Autowired
+    private TestService testService;
+
+    @Autowired
+    private QuestionService questionService;
+
+    @Autowired
+    private AnswerService answerService;
+
+    @RequestMapping(value = "/getTopics", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public String getTopicPage(Model model) {
+        List<Topic> topicList = topicService.getTopics();
+        model.addAttribute("topicList", topicList);
+        return "tutor/tests";
+    }
+
+    @RequestMapping(value = "/getQuestions", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public String getQuestionPage(Model model) {
+        List<Question> questionList = questionService.getQuestions();
+        List<Answer> answerList = answerService.findByQuestionId(6);
+        model.addAttribute("questionList", questionList);
+    //    model.addAttribute("answerList", answerList);
+        return "tutor/questions";
+    }
+
+    @RequestMapping(value = "/getStatistics", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public String getStatisticPage() {
+        return "tutor/statistics";
+    }
+
+}
