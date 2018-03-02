@@ -15,9 +15,12 @@ import java.util.List;
 public class TutorQuestionController {
 
     @Autowired
-    private QuestionService questionService;
+    public TutorQuestionController(AnswerService answerService, QuestionService questionService) {
+        this.answerService = answerService;
+        this.questionService=questionService;
+    }
 
-    @Autowired
+    private QuestionService questionService;
     private AnswerService answerService;
 
     @RequestMapping(value = "/addQuestion", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")

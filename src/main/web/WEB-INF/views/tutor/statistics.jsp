@@ -11,7 +11,7 @@
 <head>
     <title>Tutor Statistics</title>
 
-    <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <li><a href="/getTestStatistic">Статистика по тесту</a></li>

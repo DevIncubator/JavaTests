@@ -11,8 +11,8 @@
 <head>
     <title>Tutor User Statistic</title>
 
-    <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
-    <link href="/css/tutor/tableStyle.css" rel="stylesheet">
+    <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/tutor/tableStyle.css" rel="stylesheet">
 </head>
 <body>
 <table class="table table-striped">

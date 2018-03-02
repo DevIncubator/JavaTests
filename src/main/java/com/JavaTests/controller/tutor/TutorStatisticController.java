@@ -14,6 +14,10 @@ import java.util.List;
 public class TutorStatisticController {
 
     @Autowired
+    public TutorStatisticController(StatisticService statisticService) {
+        this.statisticService=statisticService;
+    }
+
     private StatisticService statisticService;
 
     @RequestMapping(value = "/getTestStatistic", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")

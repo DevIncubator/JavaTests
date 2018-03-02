@@ -15,9 +15,12 @@ import java.util.List;
 public class TutorTopicController {
 
     @Autowired
-    private TopicService topicService;
+    public TutorTopicController(TopicService topicService, TestService testService) {
+        this.topicService = topicService;
+        this.testService = testService;
+    }
 
-    @Autowired
+    private TopicService topicService;
     private TestService testService;
 
     @RequestMapping(value = "/addTopic", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")

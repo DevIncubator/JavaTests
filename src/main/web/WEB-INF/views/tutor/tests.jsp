@@ -11,7 +11,7 @@
 <head>
     <title>Test</title>
 
-    <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="/js/testsLogic.js"></script>
 </head>

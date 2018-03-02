@@ -16,19 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("/tutor/tutorMain")
 public class TutorMainPageController {
 
     @Autowired
+    public TutorMainPageController(TopicService topicService, TestService testService, QuestionService questionService, AnswerService answerService) {
+        this.topicService = topicService;
+        this.testService = testService;
+        this.questionService = questionService;
+        this.answerService = answerService;
+    }
+
     private TopicService topicService;
-
-    @Autowired
     private TestService testService;
-
-    @Autowired
     private QuestionService questionService;
-
-    @Autowired
     private AnswerService answerService;
 
     @RequestMapping(value = "/getTopics", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
