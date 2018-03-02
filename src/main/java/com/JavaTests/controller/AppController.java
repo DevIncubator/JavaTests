@@ -1,6 +1,8 @@
 package com.JavaTests.controller;
 
+import com.JavaTests.entity.Topic;
 import com.JavaTests.entity.User;
+import com.JavaTests.services.adminService.AdminTopicService;
 import com.JavaTests.services.security.SecurityService;
 import com.JavaTests.services.userService.UserService;
 import com.JavaTests.validator.UserValidator;
@@ -11,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Controller
 public class AppController {
@@ -23,6 +27,9 @@ public class AppController {
 
     @Autowired
     private SecurityService securityService;
+
+    @Autowired
+    private AdminTopicService adminTopicService;
 
 //    @RequestMapping(value = "/")
 //    public String hello() {
@@ -66,5 +73,6 @@ public class AppController {
     public String welcome(Model model) {
         return "security/welcome";
     }
+
 
 }
