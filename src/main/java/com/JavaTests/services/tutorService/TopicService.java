@@ -10,9 +10,5 @@ public interface TopicService {
 
     Topic findByTopicName(String name);
 
-    void deleteTopic(Topic topic);
-
-    void editTopic(Topic topic);
-
     List<Topic> getTopics();
 }

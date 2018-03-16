@@ -26,14 +26,14 @@
         <th>Неправильно</th>
     </tr>
     </thead>
-        <c:forEach items="${questionStatistic}" var="question">
-            <tr>
-                <td>${question.getDescription()}</td>
-                <td>${question.getCount()}</td>
-                <td>${question.getCorrect()}</td>
-                <td>${question.getIncorrect()}</td>
-            </tr>
-        </c:forEach>
+    <c:forEach items="${questionStatistic}" var="question">
+        <tr>
+            <td>${question.getDescription()}</td>
+            <td>${question.getCount()}</td>
+            <td>${question.getCorrect()*100}%</td>
+            <td>${question.getIncorrect()*100}%</td>
+        </tr>
+    </c:forEach>
 </table>
 <a class="btn btn-primary" href="/getStatistics">Назад</a>
 </body>

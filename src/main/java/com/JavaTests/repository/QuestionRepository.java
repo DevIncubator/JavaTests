@@ -19,4 +19,6 @@ public interface QuestionRepository extends CrudRepository<Question, Integer> {
     List<Question> findByTest(Test test);
 
     Question findByDescription(String description);
+
+    Question findById(Integer id);
 }

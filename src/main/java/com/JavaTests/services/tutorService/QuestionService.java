@@ -8,11 +8,7 @@ public interface QuestionService {
 
     void addQuestion(Question question);
 
-    Question findByDescription(String description);
+    Question findById(Integer id);
 
     List<Question> getQuestions();
-
- //   Question editQuestion(Question question);
-
-
 }

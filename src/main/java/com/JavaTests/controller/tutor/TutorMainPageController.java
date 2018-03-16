@@ -19,17 +19,13 @@ import java.util.List;
 public class TutorMainPageController {
 
     @Autowired
-    public TutorMainPageController(TopicService topicService, TestService testService, QuestionService questionService, AnswerService answerService) {
+    public TutorMainPageController(TopicService topicService, QuestionService questionService) {
         this.topicService = topicService;
-        this.testService = testService;
         this.questionService = questionService;
-        this.answerService = answerService;
     }
 
     private TopicService topicService;
-    private TestService testService;
     private QuestionService questionService;
-    private AnswerService answerService;
 
     @RequestMapping(value = "/getTopics", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String getTopicPage(Model model) {
@@ -41,9 +37,7 @@ public class TutorMainPageController {
     @RequestMapping(value = "/getQuestions", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String getQuestionPage(Model model) {
         List<Question> questionList = questionService.getQuestions();
-        List<Answer> answerList = answerService.findByQuestionId(6);
         model.addAttribute("questionList", questionList);
-    //    model.addAttribute("answerList", answerList);
         return "tutor/questions";
     }
 

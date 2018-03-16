@@ -23,8 +23,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Transactional
-    public Question findByDescription(String description) {
-        return questionRepository.findByDescription(description);
+    public Question findById(Integer id) {
+        return questionRepository.findById(id);
     }
 
     @Transactional
@@ -35,11 +35,4 @@ public class QuestionServiceImpl implements QuestionService {
             questionList.add(iterator.next());
         return questionList;
     }
-
-   /* @Transactional
-    public Question editQuestion(Question question) {
-        Question questionToupdate = new Test(question.getId(), question.getDescription(), question.getTest(), question.getListAnswer());
-        questionRepository.save(questionToupdate);
-        return questionToupdate;
-    }*/
 }

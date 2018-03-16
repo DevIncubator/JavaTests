@@ -32,6 +32,10 @@ public class Question {
     public Question() {
     }
 
+    public Question(String description) {
+        this.description = description;
+    }
+
     public Question(String description, Test test, List<Literature> listLiterature, List<Answer> listAnswer, List<Statistic> listStatistics) {
         this.description = description;
         this.test = test;

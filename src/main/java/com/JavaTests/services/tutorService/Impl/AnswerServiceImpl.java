@@ -16,7 +16,7 @@ public class AnswerServiceImpl implements AnswerService {
     private AnswerRepository answerRepository;
 
     @Transactional
-    public void addAnswer(Answer answer, Integer questionId) {
+    public void addAnswer(Answer answer) {
         answerRepository.save(answer);
     }
 

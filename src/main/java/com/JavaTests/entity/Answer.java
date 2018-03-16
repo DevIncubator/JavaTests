@@ -22,6 +22,11 @@ public class Answer {
     public Answer() {
     }
 
+    public Answer(String description, Question question) {
+        this.description = description;
+        this.question = question;
+    }
+
     public Answer(String description, boolean correct, Question question) {
         this.description = description;
         this.correct = correct;

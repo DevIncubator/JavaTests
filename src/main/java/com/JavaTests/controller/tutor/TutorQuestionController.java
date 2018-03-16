@@ -23,29 +23,28 @@ public class TutorQuestionController {
     private QuestionService questionService;
     private AnswerService answerService;
 
-    @RequestMapping(value = "/addQuestion", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public String addQuestion(@ModelAttribute("question")Question question, List<Answer> answers) {
-        questionService.addQuestion(question);
-        return "addQuestion";
-    }
-
     @RequestMapping(value = "/getAnswersByQuestionId", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public String getAnswersById(Model model, @ModelAttribute("question") String questionDescription) {
-        Question question = questionService.findByDescription(questionDescription);
-        List<Answer> answerList = answerService.findByQuestionId(question.getId());
-        model.addAttribute("answerList", answerList);
-        return "tutor/questions";
+    @ResponseBody
+    public List<Answer> getAnswersById(@ModelAttribute("question") Integer questionId) {
+        List<Answer> answerList = answerService.findByQuestionId(questionId);
+        return answerList;
     }
 
     @RequestMapping(value = "/addAnswer", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public String AddAnswer(Answer answer, @ModelAttribute("question") Integer questionId ) {
-        answerService.addAnswer(answer, questionId);
-        return "addAnswer";
+    public String AddAnswer(@ModelAttribute("answer") String answerDescription,@ModelAttribute("questionId") Integer questionId, @ModelAttribute("question") String questionDescription ) {
+        Question question = questionService.findById(questionId);
+        if (question == null){
+            question = new Question(questionDescription);
+            questionService.addQuestion(question);
+        }
+        Answer answer = new Answer(answerDescription, question);
+        answerService.addAnswer(answer);
+        return "redirect:/getQuestions";
     }
 
     @RequestMapping(value = "/getQuestionsRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public void getQuestionssRest() {
+    public void getQuestionsRest() {
         questionService.getQuestions();
     }
 

@@ -14,6 +14,12 @@
     <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="resources/css/tutor/tableStyle.css" rel="stylesheet">
 </head>
+<head>
+    <title>Tutor Test Statistic</title>
+
+    <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="/css/tableStyle.css" rel="stylesheet">
+</head>
 <body>
 <table class="table table-striped">
     <thead>
@@ -24,12 +30,12 @@
         <th>Неправильно</th>
     </tr>
     </thead>
-    <c:forEach items="" var="test">
+    <c:forEach items="${testStatistic}" var="test">
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>${test.getName()}</td>
+            <td>${test.getCount()}</td>
+            <td>${test.getCorrect()*100}%</td>
+            <td>${test.getIncorrect()*100}%</td>
         </tr>
     </c:forEach>
 </table>

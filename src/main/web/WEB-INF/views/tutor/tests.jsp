@@ -16,21 +16,24 @@
     <script src="/js/testsLogic.js"></script>
 </head>
 <body>
-
+<div>
+    Название темы:
     <input type="text" name="topic" id="choose_topic" list="topic_list">
-        <datalist id="topic_list">
-            <c:forEach items="${topicList}" var="topic">
-                <option>${topic.getName()}</option>
-            </c:forEach>
-        </datalist>
-
+    <datalist id="topic_list">
+        <c:forEach items="${topicList}" var="topic">
+            <option>${topic.getName()}</option>
+        </c:forEach>
+    </datalist>
+</div>
+<div>
+    Название теста:
     <input type="text" name="test" id="choose_test" list="test_list">
     <datalist id="test_list">
         <c:forEach items="${testList}" var="test">
             <option>${test.getName()}</option>>
         </c:forEach>
     </datalist>
-
+</div>
 <a class="btn btn-success" id="save">Сохранить</a>
 <a class="btn btn-primary" href="/tutorMainPage">Назад</a>
 
@@ -48,7 +51,11 @@
             contentType:
                 "application/json; charset=utf-8",
             success: function (data) {
-                $("#choose_test").html(data);
+                var item = $('<datalist id="test_list"></datalist>');
+                for(var i=0; i<data.length; i++) {
+                    item.append("<option>" + data[i].name +"</option>");
+                }
+                $("#test_list").replaceWith(item);
             },
             error: function () {
                 var item = $('<datalist id="test_list"></datalist>');

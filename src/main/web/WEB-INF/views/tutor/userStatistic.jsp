@@ -24,12 +24,12 @@
         <th>Неправильно</th>
     </tr>
     </thead>
-    <c:forEach items="" var="user">
+    <c:forEach items="${userStatistic}" var="user">
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>${user.getFirstName()} ${user.getLastName()}</td>
+            <td>${user.getCount()}</td>
+            <td>${user.getCorrect()*100}%</td>
+            <td>${user.getIncorrect()*100}%</td>
         </tr>
     </c:forEach>
 </table>

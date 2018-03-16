@@ -14,8 +14,8 @@
     <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-<li><a href="/getTopics">Редактировать тему/тест</a></li>
-<li><a href="/getQuestions">Редактировать вопросы/ответы</a></li>
-<li><a href="/getStatistics">Статистика</a></li>
+<li><a class="text-primary" href="/getTopics">Редактировать тему/тест</a></li>
+<li><a class="text-primary" href="/getQuestions">Редактировать вопросы/ответы</a></li>
+<li><a class="text-primary" href="/getStatistics">Статистика</a></li>
 </body>
 </html>

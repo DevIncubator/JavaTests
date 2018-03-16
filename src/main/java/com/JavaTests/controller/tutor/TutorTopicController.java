@@ -35,18 +35,12 @@ public class TutorTopicController {
     return "redirect:/getTopics";
     }
 
-    @RequestMapping(value = "/addTest", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public String addTest(@ModelAttribute("test") Test test) {
-        testService.addTest(test);
-        return "addTest";
-    }
-
     @RequestMapping(value = "/getTestsByTopicId", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public String getTestsById(Model model, @ModelAttribute("topic") String topicName) {
+    @ResponseBody
+    public List<Test> getTestsById(Model model, @ModelAttribute("topic") String topicName) {
         Topic topic = topicService.findByTopicName(topicName);
         List<Test> testList = testService.findByTopicId(topic.getId());
-        model.addAttribute("testList", testList);
-        return "tutor/tests";
+        return testList;
     }
 
     @RequestMapping(value = "/addTopicRest", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
