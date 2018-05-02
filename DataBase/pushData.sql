@@ -55,17 +55,60 @@ INSERT INTO role (id, user, tutor, admin, role) VALUES (1, 1, 0, 0, "ROLE_USER")
 INSERT INTO role (id, user, tutor, admin, role) VALUES (2, 0, 1, 0, "ROLE_TUTOR");
 INSERT INTO role (id, user, tutor, admin, role) VALUES (3, 0, 0, 1, "ROLE_ADMIN");
 
-INSERT INTO statistic (correct, questionId) VALUES (true, 1);
-INSERT INTO statistic (correct, questionId) VALUES (false, 1);
-INSERT INTO statistic (correct, questionId) VALUES (true, 2);
-INSERT INTO statistic (correct, questionId) VALUES (false, 2);
-INSERT INTO statistic (correct, questionId) VALUES (true, 3);
-INSERT INTO statistic (correct, questionId) VALUES (false, 3);
-INSERT INTO statistic (correct, questionId) VALUES (true, 4);
-INSERT INTO statistic (correct, questionId) VALUES (false, 4);
-INSERT INTO statistic (correct, questionId) VALUES (true, 5);
-INSERT INTO statistic (correct, questionId) VALUES (false, 5);
+INSERT INTO `statistic` VALUES
+(1,'2018-01-01 00:00:00',1,1,1),
+(2,'2018-01-02 00:01:00',1,1,2),
+(3,'2018-01-01 00:00:00',0,2,1),
+(4,'2018-01-02 00:01:00',0,2,2),
+(5,'2018-01-01 00:00:00',1,3,1),
+(6,'2018-01-02 00:01:00',0,3,2),
+(7,'2018-01-01 00:00:00',1,4,1),
+(8,'2018-01-02 00:01:00',0,4,2),
+(9,'2018-01-01 00:00:00',1,5,1),
+(10,'2018-01-02 00:01:00',0,5,2),
+(11,'2018-04-05 23:08:30',1,3,1),
+(12,'2018-04-05 23:08:30',1,4,1),
+(13,'2018-04-05 23:08:30',1,5,1),
+(14,'2018-04-05 23:08:30',0,1,1),
+(15,'2018-04-05 23:08:30',0,2,1),
+(16,'2018-04-06 18:19:23',1,1,1),
+(17,'2018-04-06 18:19:23',1,2,1),
+(18,'2018-04-06 18:19:23',1,4,1),
+(19,'2018-04-06 18:19:23',1,5,1),
+(20,'2018-04-06 18:19:23',0,3,1),
+(21,'2018-04-27 12:18:19',1,5,1),
+(22,'2018-04-27 12:18:19',0,1,1),
+(23,'2018-04-27 12:18:19',0,2,1),
+(24,'2018-04-27 12:18:19',0,3,1),
+(25,'2018-04-27 12:18:19',0,4,1),
+(26,'2018-04-27 12:18:49',1,5,1),
+(27,'2018-04-27 12:18:49',0,1,1),
+(28,'2018-04-27 12:18:49',0,2,1),
+(29,'2018-04-27 12:18:49',0,3,1),
+(30,'2018-04-27 12:18:49',0,4,1),
+(31,'2018-04-27 12:36:45',1,1,1),
+(32,'2018-04-27 12:36:45',1,4,1),
+(33,'2018-04-27 12:36:45',1,5,1),
+(34,'2018-04-27 12:36:45',0,2,1),
+(35,'2018-04-27 12:36:45',0,3,1),
+(36,'2018-04-29 17:07:06',1,4,1),
+(37,'2018-04-29 17:07:06',1,5,1),
+(38,'2018-04-29 17:07:06',0,1,1),
+(39,'2018-04-29 17:07:06',0,2,1),
+(40,'2018-04-29 17:07:06',0,3,1),
+(41,'2018-05-02 12:15:49',1,5,1),
+(42,'2018-05-02 12:15:49',0,1,1),
+(43,'2018-05-02 12:15:49',0,2,1),
+(44,'2018-05-02 12:15:49',0,3,1),
+(45,'2018-05-02 12:15:49',0,4,1),
+(46,'2018-05-02 16:16:50',1,5,1),
+(47,'2018-05-02 16:16:50',0,1,1),
+(48,'2018-05-02 16:16:50',0,2,1),
+(49,'2018-05-02 16:16:50',0,3,1),
+(50,'2018-05-02 16:16:50',0,4,1),
 
-INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('1', 'Kirill', 'Sereda', 'ksereda', '12345', '3');
-INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('2', 'Alex', 'Rybin', 'alex23', '123123', '2');
+
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('1', 'Kirill', 'Sereda', 'ksereda', '$2a$11$6KDcfufBYnnx6RtcVXEz/uxnXLwITQ6TlwjKLskJgulxfqroA/asC', '1');
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('2', 'Oleg', 'Seiko', 'owin', '$2a$11$tBzo2SWlQ4vvWQ.tYlCeQOz4tgZF69g5Tc3V6l9OGbnvQk7PBQZrW', '2');
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('3', 'Alex', 'Rybin', 'alex23', '$2a$11$kP/eB6LOFkqzN82zVgFqRuYgt3WWoMdrfSN5FTbGmIbfPzhyrNVAS', '3');
 
