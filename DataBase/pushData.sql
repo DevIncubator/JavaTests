@@ -55,7 +55,11 @@ INSERT INTO role (id, user, tutor, admin, role) VALUES (1, 1, 0, 0, "ROLE_USER")
 INSERT INTO role (id, user, tutor, admin, role) VALUES (2, 0, 1, 0, "ROLE_TUTOR");
 INSERT INTO role (id, user, tutor, admin, role) VALUES (3, 0, 0, 1, "ROLE_ADMIN");
 
-INSERT INTO `statistic` VALUES
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('1', 'Kirill', 'Sereda', 'ksereda', '$2a$11$6KDcfufBYnnx6RtcVXEz/uxnXLwITQ6TlwjKLskJgulxfqroA/asC', '1');
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('2', 'Oleg', 'Seiko', 'owin', '$2a$11$tBzo2SWlQ4vvWQ.tYlCeQOz4tgZF69g5Tc3V6l9OGbnvQk7PBQZrW', '2');
+INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('3', 'Alex', 'Rybin', 'alex23', '$2a$11$kP/eB6LOFkqzN82zVgFqRuYgt3WWoMdrfSN5FTbGmIbfPzhyrNVAS', '3');
+
+INSERT INTO `statistic` (id, date, correct, questionId, userId) VALUES
 (1,'2018-01-01 00:00:00',1,1,1),
 (2,'2018-01-02 00:01:00',1,1,2),
 (3,'2018-01-01 00:00:00',0,2,1),
@@ -105,10 +109,4 @@ INSERT INTO `statistic` VALUES
 (47,'2018-05-02 16:16:50',0,1,1),
 (48,'2018-05-02 16:16:50',0,2,1),
 (49,'2018-05-02 16:16:50',0,3,1),
-(50,'2018-05-02 16:16:50',0,4,1),
-
-
-INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('1', 'Kirill', 'Sereda', 'ksereda', '$2a$11$6KDcfufBYnnx6RtcVXEz/uxnXLwITQ6TlwjKLskJgulxfqroA/asC', '1');
-INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('2', 'Oleg', 'Seiko', 'owin', '$2a$11$tBzo2SWlQ4vvWQ.tYlCeQOz4tgZF69g5Tc3V6l9OGbnvQk7PBQZrW', '2');
-INSERT INTO user (id, firstName, lastName, login, password, roleId) VALUES ('3', 'Alex', 'Rybin', 'alex23', '$2a$11$kP/eB6LOFkqzN82zVgFqRuYgt3WWoMdrfSN5FTbGmIbfPzhyrNVAS', '3');
-
+(50,'2018-05-02 16:16:50',0,4,1);

@@ -32,7 +32,7 @@ CREATE TABLE `user` (
   `firstName` varchar(45) DEFAULT NULL,
   `lastName` varchar(45) DEFAULT NULL,
   `login` varchar(45) UNIQUE DEFAULT NULL,
-  `password` int(11) DEFAULT NULL,
+  `password` varchar(1000) DEFAULT NULL,
   `roleId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `roleId_idx` (`roleId`),
@@ -50,7 +50,7 @@ CREATE TABLE `question` (
 
 CREATE TABLE `statistic` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` datatime DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `correct` tinyint(4) DEFAULT NULL,
   `questionId` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,

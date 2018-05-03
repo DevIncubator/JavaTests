@@ -18,7 +18,7 @@ VIEW `question_statistic` AS
                 `statistic`
             GROUP BY `statistic`.`questionId`)
             AND (`statistic`.`questionId` = `question`.`id`))
-    GROUP BY `statistic`.`questionId`
+    GROUP BY `statistic`.`questionId`;
 	
 CREATE 
     ALGORITHM = UNDEFINED 
@@ -39,7 +39,7 @@ VIEW `test_results` AS
         JOIN `question` ON ((`statistic`.`questionId` = `question`.`id`)))
         JOIN `test` ON ((`question`.`testid` = `test`.`id`)))
         JOIN `user` ON ((`statistic`.`userId` = `user`.`id`)))
-    GROUP BY `question`.`testid` , `statistic`.`userId` , `statistic`.`date`
+    GROUP BY `question`.`testid` , `statistic`.`userId` , `statistic`.`date`;
 	
 CREATE 
     ALGORITHM = UNDEFINED 
@@ -53,7 +53,7 @@ VIEW `test_statistic` AS
         AVG(`test_results`.`correct`) AS `correct`
     FROM
         `test_results`
-    GROUP BY `test_results`.`testId`
+    GROUP BY `test_results`.`testId`;
 	
 CREATE 
     ALGORITHM = UNDEFINED 
@@ -68,4 +68,4 @@ VIEW `user_statistic` AS
         AVG(`test_results`.`correct`) AS `correct`
     FROM
         `test_results`
-    GROUP BY `test_results`.`userId`
+    GROUP BY `test_results`.`userId`;
