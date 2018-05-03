@@ -1,0 +1,15 @@
+.text-primary{
+    cursor: pointer;
+}
+
+.btn-danger{
+    cursor: pointer;
+}
+
+#choose_question{
+    width: 500px;
+}
+
+.alert-link{
+    cursor: pointer;
+}
