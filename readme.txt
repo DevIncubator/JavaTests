@@ -1,4 +1,4 @@
-ADMIN:
+﻿ADMIN:
 method = GET - /JavaTests/admin/users/getUsersRest - возвращает список всех пользователей
 method = GET - /JavaTests/admin/users/saveAsAdmin/{userId} - изменяет роль пользователя на Admin
 method = GET - /JavaTests/admin/users/saveAsTutor/{userId} - изменяет роль пользователя на Tutor
@@ -53,4 +53,4 @@ method = GET - /JavaTests/user/test/getLinkByQuestionId/{questionId} - возв�
 SECURITY:
 method = POST - /JavaTests/registrationRest - принимает User с ролью user и создает его в БД (для регистрации)
 method = POST - /JavaTests/logout - logout
-method = POST - /JavaTests/login?login=owin&password=tutor - пример login, где owin - login и tutor - password
+method = POST - /JavaTests/login?login=owin&password=tutor - пример login, где owin - login и tutor - password/
